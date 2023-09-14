@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      target: node
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: bubbles
+      DB_PASSWORD: bubbles
+      DB_NAME: sts
+    networks:
+      - backend-api
+
+  postgres:
+    image: postgres
+    build:
+      context: .
+      target: postgres  # Path to the directory containing the PostgreSQL Dockerfile (if applicable)
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: bubbles
+    volumes:
+    - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    networks:
+      - backend-api
+
+networks:
+  backend-api:

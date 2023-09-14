@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "bubbles",
+    "password": "bubbles",
+    "database": "sts",
+    "host": "postgres",
+    "dialect": "postgres"
+  }
+}

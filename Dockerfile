@@ -18,4 +18,4 @@ EXPOSE 3000
 
 RUN chmod +x startup.sh
 # Start the application
-ENTRYPOINT [ "./startup.sh" ]
+ENTRYPOINT ["./startup.sh", "0.0.0.0"]

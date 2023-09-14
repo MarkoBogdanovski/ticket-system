@@ -31,9 +31,13 @@ const assignAgentsToTickets = async availableAgent => {
       return { message: 'All available agents were assigned a ticket.' };
     } else if (ticket.length > 0) {
       for (let i = 0; i < availableAgent.length; i++) {
-        await availableAgent[i].update({ available: false });
         await ticket[i].update({ assignedTo: availableAgent[i].id });
       }
+      await User.update({ available: false }, {
+        where: {
+          id: availableAgent.map(agent => agent.id)
+        }
+      });
       return ticket
     } else {
       return { message: 'No unresolved and unassigned tickets.' };

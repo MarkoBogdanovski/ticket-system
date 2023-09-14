@@ -4,12 +4,10 @@ const seedUsers = async () => {
   try {
     // Define an array of user data that you want to insert
     const usersData = [
-      { name: 'Marko Bog' },
       { name: 'John Doe' },
-      { name: 'Demo Test' },
+      { name: 'Novak Djokovic' },
       { name: 'Nikola Jokic' },
       { name: 'Bogdan Bogdanovic' },
-      { name: 'Novak Djokovic' },
       // Add more user data as needed
     ];
 
